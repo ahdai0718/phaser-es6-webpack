@@ -14,6 +14,7 @@ var definePlugin = new webpack.DefinePlugin({
 })
 
 module.exports = {
+  mode: 'development',
   entry: {
     app: [
       'babel-polyfill',
