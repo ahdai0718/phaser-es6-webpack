@@ -29,9 +29,19 @@ module.exports = {
     filename: 'bundle.js'
   },
   watch: true,
+  optimization: {
+      splitChunks: {
+          cacheGroups: {
+              commons: {
+                  test: /[\\/]node_modules[\\/]/,
+                  name: 'vendor',
+                  chunks: 'all'
+              }
+          }
+      }
+  },
   plugins: [
     definePlugin,
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor'/* chunkName= */, filename: 'vendor.bundle.js'/* filename= */}),
     new HtmlWebpackPlugin({
       filename: '../index.html',
       template: './src/index.html',
